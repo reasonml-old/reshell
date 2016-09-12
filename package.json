@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "name": "reshell",
+  "description": "An augmented shell with reason toolchain",
+  "exportedEnvVars": {
+     "PATH": {
+       "global": true,
+       "resolveAsRelativePath": true,
+       "globalCollisionBehavior": "joinPath",
+       "val": "./scripts"
+     },
+     "FINDLIB": {
+       "global": true,
+       "resolveAsRelativePath": true,
+       "globalCollisionBehavior": "joinPath",
+       "val": "./_build/ocamlfind/lib"
+     }
+  },
+  "bin": {
+      "rebash": "rebash",
+      "refish": "refish",
+      "rezsh": "rezsh"
+  },
+  "dependencies": {
+      "reason": "*",
+      "nopam": "https://github.com/yunxing/nopam.git",
+      "dependency-env": "https://github.com/npm-ml/dependency-env.git"
+  }
+}

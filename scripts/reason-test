@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd $(reason-dir) && make test

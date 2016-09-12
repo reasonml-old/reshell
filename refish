@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+. $DIR/scripts/common.sh
+
+BINDIR=$DIR/node_modules/.bin
+
+REASONDIR=$DIR/node_modules/reason
+
+REASONBINDIR=$REASONDIR/node_modules/.bin
+
+dependencyEnv=$BINDIR/dependencyEnv
+
+if [ ! -f "$dependencyEnv" ]; then
+    dependencyEnv=$REASONBINDIR/dependencyEnv
+fi
+
+if [ ! -f "$dependencyEnv" ]; then
+    echo "Couldn't find dependency_env at $dependencyEnv, exiting"
+    exit 1
+fi
+
+nopam=$BINDIR/nopam
+
+if [ ! -f "$nopam" ]; then
+    nopam=$REASONBINDIR/nopam
+fi
+
+if [ ! -f "$nopam" ]; then
+    echo "Couldn't find nopam at $nopam, exiting"
+    exit 1
+fi
+
+export oldFishDir="$HOME/.config/fish/"
+
+fishHitory="$oldFishDir/fish_history"
+
+ln -fs $fishHitory $DIR/fish/fish_history
+
+export XDG_CONFIG_HOME=$DIR
+
+export fish_greeting=$greetingMsg
+
+pushd $DIR > /dev/null
+
+eval $($dependencyEnv) && $nopam && fish
+
+# popd > /dev/null
+
+# fish
