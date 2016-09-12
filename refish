@@ -50,8 +50,8 @@ export fish_greeting=$greetingMsg
 
 pushd $DIR > /dev/null
 
-eval $($dependencyEnv) && $nopam && fish
+eval $($dependencyEnv) && $nopam
 
-# popd > /dev/null
+popd > /dev/null
 
-# fish
+fish
