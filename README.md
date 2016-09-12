@@ -9,7 +9,8 @@ git clone https://github.com/facebook/reason # skip this if you already have rea
 git clone https://github.com/reasonml/reshell
 cd reshell
 npm link ../reason # link local reason 
-npm install # link commands globally
+npm install # install dependencies
+npm link # link commands globally
 ```
 
 ## Usage
