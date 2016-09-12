@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
   "name": "reshell",
-  "description": "An augmented shell with reason toolchain",
+  "description": "Augmented shell with reason toolchain",
   "exportedEnvVars": {
      "PATH": {
        "global": true,
