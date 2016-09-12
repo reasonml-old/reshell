@@ -25,6 +25,6 @@ or
 ```
 refish # to get a fish session
 ```
-You will get a virtual env shell: 
+You will get a virtual env shell.
 
 
