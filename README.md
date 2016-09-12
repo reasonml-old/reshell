@@ -5,7 +5,7 @@ Augmented shell with reason toolchain for developers who install reason through 
 ## Setup
 
 ```
-git clone https://github.com/facebook/reason
+git clone https://github.com/facebook/reason # skip this if you already have reason cloned
 git clone https://github.com/reasonml/reshell
 cd reshell
 npm link ../reason # link local reason 
